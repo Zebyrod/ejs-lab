@@ -57,9 +57,19 @@ const RESTAURANT = {
 //Routes 
 
 app.get('/', (req, res) => {
-  res.send('Hello There!');
+  res.render('home.ejs', {
+    RESTAURANT: RESTAURANT
+  });
+});
+
+app.get('/menu', (req, res) => {
+  res.render('menu.ejs');
+});
+
+app.get('/menu/:id', (req, res)=>{
+  res.render('menu.ejs');
 });
 
 // Listener
- 
+
 app.listen(3000);
