@@ -63,13 +63,21 @@ app.get('/', (req, res) => {
 });
 
 app.get('/menu', (req, res) => {
-  res.render('menu.ejs');
+  res.render('menu.ejs' , {
+    MENU: RESTAURANT.menu
+  });
 });
 
 app.get('/menu/:id', (req, res)=>{
-  res.render('menu.ejs');
+  const index = req.params.id
+  console.log('index', index)
+  res.render('show.ejs', {
+    item: RESTAURANT.menu[index]
+  });
 });
 
 // Listener
 
-app.listen(3000);
+app.listen((3000), ()=>{
+  console.log("Now listening on port 3000")
+});

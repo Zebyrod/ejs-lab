@@ -9,11 +9,11 @@
 		<%- include('./partials/nav') %>
 		<h1>Full Menu</h1>
 		<ul>
-			<%= RESTAURANT.menu.forEach((item, index) => { %>
-			<a href="/<%= index %>">
+			<% MENU.forEach((item, index) => { %>
+			<a href="/menu/<%= index %>">
 				<li><%= item.name %></li>
 			</a>
-			<%= }); %>
+			<% }); %>
 		</ul>
 	</body>
 </html>
