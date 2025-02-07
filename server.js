@@ -2,6 +2,9 @@
 
 const express = require('express');
 const app = express();
+
+app.set("view engine", "ejs");
+
 // Data
 
 const RESTAURANT = {
@@ -63,16 +66,23 @@ app.get('/', (req, res) => {
 });
 
 app.get('/menu', (req, res) => {
-  res.render('menu.ejs' , {
-    MENU: RESTAURANT.menu
+  res.render('menu' , {
+    menu: RESTAURANT.menu
   });
 });
 
-app.get('/menu/:id', (req, res)=>{
-  const index = req.params.id
-  console.log('index', index)
-  res.render('show.ejs', {
-    item: RESTAURANT.menu[index]
+app.get('/menu/:category', (req, res) => {
+  const category = req.params.category;
+  // changed the first letter to upper case (character at index 0) and added it back to the rest of the word (slice the letter at index 1 and onward)
+  const capCategory = category.charAt(0).toUpperCase() + category.slice(1);
+  // using the filter method to filter through all menu items and pulling them based on category
+  const menuItems = RESTAURANT.menu.filter(item => item.category === category);
+  // console.log(menuItems);
+  res.render('category', {
+      // passing all the variables defined above into the locals object
+      category,
+      capCategory,
+      menuItems,
   });
 });
 

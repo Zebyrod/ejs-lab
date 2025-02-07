@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><%= RESTAURANT.name %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= RESTAURANT.name %></title>
 </head>
+
 <body>
-  <%- include('./partials/nav') %>
+    <%- include('./partials/nav') %>
 
-  <h1><%= RESTAURANT.name %></h1>
-  <p> Address <%= RESTAURANT.address %></p>
-  <p> Phone: <%= RESTAURANT.phone %></p>
-
-  <% if(RESTAURANT.isOpen === true){ %>
-      <p>Yes we are open!</p>
- <% }else { %>
-    <p> Sorry, we are closed.</p>
-  <% } %>
+    <h1><%= RESTAURANT.name%></h1>
+    <p>Located at: <%= RESTAURANT.address %></p>
+    <p>Phone: <%= RESTAURANT.phone%></p>
+    <p><% if (RESTAURANT.isOpen) { %></p>
+        <%= 'Yes, we are open!' %>
+    <% } else { %>
+        <%= 'Sorry, we are closed.' %>
+    <% }; %>
 </body>
+
 </html>
